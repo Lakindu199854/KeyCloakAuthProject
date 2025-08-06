@@ -4,13 +4,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
+
 public class SecurityConfig {
     @Bean
-    public SecurityFilterChain springSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain customSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/api/home/**"))
                 .authorizeHttpRequests(httpRequests -> httpRequests.anyRequest().authenticated())

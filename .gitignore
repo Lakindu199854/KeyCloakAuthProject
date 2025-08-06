@@ -37,7 +37,5 @@ build/
 
 
 node_modules/
-.cache
-.cache/
-/cache
-/.cache
+
+**/cache/
