@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {OAuthService} from "angular-oauth2-oidc";
-import {authConfig} from "./auth.config";
+import { OAuthService } from 'angular-oauth2-oidc';
+import { authConfig } from './auth.config';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +10,20 @@ import {authConfig} from "./auth.config";
 export class AppComponent {
   title = 'frontend';
 
-  //Injecting the oAuth class into the component class
-  constructor(private oauthService : OAuthService) {
+  constructor(private oauthService: OAuthService) {
     this.configure();
   }
 
   private configure() {
-    this.oauthService.configure(authConfig)
+    this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
   }
 
-  login(){
+  login() {
     this.oauthService.initLoginFlow();
   }
 
-  logout(){
-    this.oauthService.initLoginFlow();
+  logout() {
+    this.oauthService.logOut();
   }
 }
