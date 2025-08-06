@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {OAuthModule} from "angular-oauth2-oidc";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OAuthModule.forRoot({
+        resourceServer:{
+          allowedUrls:['http://localhost:8080/api'],
+          sendAccessToken:true
+        }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

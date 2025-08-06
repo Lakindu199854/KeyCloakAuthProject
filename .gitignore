@@ -34,3 +34,6 @@ build/
 
 ### Node Modules ###
 !**/src/main/resources/frontend/node_modules
+
+
+node_modules/
